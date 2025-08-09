@@ -1,0 +1,24 @@
+# Ignore Python virtual environments
+phaseIV/venv/
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask-related files
+.env
+instance/
+*.db
+*.sqlite
+
+# Log files
+*.log
+
+# Secret environment files
+phaseIV/.env
+
+# VS Code and OS system files
+.vscode/
+.DS_Store
+Thumbs.db

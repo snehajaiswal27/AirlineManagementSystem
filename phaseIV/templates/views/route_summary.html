@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Route Summary</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    table {
+      margin: 2rem auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .buttons {
+      margin-top: 2rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Route Summary</h1>
+
+  <table id="dataTable">
+    <thead>
+      <tr id="tableHeader">
+        <!-- headers will be inserted dynamically -->
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- data will be inserted dynamically -->
+    </tbody>
+  </table>
+
+  <div class="buttons">
+    <button onclick="window.location.href='{{ url_for('index') }}'">Back to Home</button>
+  </div>
+
+  <script>
+    fetch('/view/route-summary')
+      .then(response => response.json())
+      .then(data => {
+        if (data.length > 0) {
+          const headerRow = document.getElementById('tableHeader');
+          const body = document.getElementById('tableBody');
+
+          // Create headers dynamically
+          Object.keys(data[0]).forEach(key => {
+            const th = document.createElement('th');
+            th.textContent = key;
+            headerRow.appendChild(th);
+          });
+
+          // Create rows dynamically
+          data.forEach(row => {
+            const tr = document.createElement('tr');
+            Object.values(row).forEach(value => {
+              const td = document.createElement('td');
+              td.textContent = value;
+              tr.appendChild(td);
+            });
+            body.appendChild(tr);
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  </script>
+</body>
+</html>

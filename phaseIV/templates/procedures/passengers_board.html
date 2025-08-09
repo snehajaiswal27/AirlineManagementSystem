@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Procedure: Passengers Board</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    form > div {
+      margin-bottom: 0.75rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+    .buttons {
+      margin-top: 1.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="reset"] {
+      background: #eee;
+    }
+    button[type="submit"] {
+      background: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Procedure: Passengers Board</h1>
+  <form id="passengers_boardForm" action="{{ url_for('submit_passengers_board') }}" method="POST">
+    <div>
+      <label for="flightId">Flightid</label>
+      <input type="text" id="flightId" name="flightId" placeholder="Enter flightId">
+    </div>
+    <div class="buttons">
+      <!-- The red underline should not be a problem when the app is run -->
+      <button type="button" onclick="window.location.href='{{ url_for('index') }}'">Cancel</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Procedure: Add Person</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    form > div {
+      margin-bottom: 0.75rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+    .buttons {
+      margin-top: 1.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="reset"] {
+      background: #eee;
+    }
+    button[type="submit"] {
+      background: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Procedure: Add Person</h1>
+  <form id="add_personForm" action="{{ url_for('submit_add_person') }}" method="POST">
+    <div>
+      <label for="locationId">Locationid</label>
+      <input type="text" id="locationId" name="locationId" placeholder="Enter locationId">
+    </div>
+    <div>
+      <label for="miles">Miles</label>
+      <input type="number" id="miles" name="miles" placeholder="Enter miles">
+    </div>
+    <div>
+      <label for="personId">Personid</label>
+      <input type="text" id="personId" name="personId" placeholder="Enter personId">
+    </div>
+    <div>
+      <label for="firstName">Firstname</label>
+      <input type="text" id="firstName" name="firstName" placeholder="Enter firstName">
+    </div>
+    <div>
+      <label for="taxId">Taxid</label>
+      <input type="text" id="taxId" name="taxId" placeholder="Enter taxId">
+    </div>
+    <div>
+      <label for="funds">Funds</label>
+      <input type="number" id="funds" name="funds" placeholder="Enter funds">
+    </div>
+    <div>
+      <label for="lastName">Lastname</label>
+      <input type="text" id="lastName" name="lastName" placeholder="Enter lastName">
+    </div>
+    <div>
+      <label for="experience">Experience</label>
+      <input type="number" id="experience" name="experience" placeholder="Enter experience">
+    </div>
+    <div class="buttons">
+      <!-- The red underline should not be a problem when the app is run -->
+      <button type="button" onclick="window.location.href='{{ url_for('index') }}'">Cancel</button>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</body>
+</html>
